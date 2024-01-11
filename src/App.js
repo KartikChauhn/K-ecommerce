@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React, { Suspense } from "react";
+import PrivateOutlet from "./PrivateOutlet";
+import { Pathname } from "./pathName";
+import "./App.css";
+
+const LandingPage = React.lazy(() => import("./Pages/LandingPage/Index"));
+const IndividualProject = React.lazy(() =>
+  import("./Pages/IndividualProject/Index")
+);
+const Cart = React.lazy(() => import("./Pages/Cart/Index"));
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Suspense fallback={<></>}>
+      <BrowserRouter>
+        <Routes>
+          <Route path={Pathname.LANDINGPAGE} element={<PrivateOutlet />}>
+            <Route index element={<LandingPage />} />
+            <Route path={Pathname.PRODUCT} element={<IndividualProject />} />
+            <Route path={Pathname.CART} element={<Cart />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </Suspense>
   );
 }
 
