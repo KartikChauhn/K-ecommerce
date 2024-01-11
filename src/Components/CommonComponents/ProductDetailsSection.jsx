@@ -1,7 +1,7 @@
 import { StarFilled } from "@ant-design/icons";
 import React from "react";
 
-const ProductDetailsSection = ({ data }) => {
+const ProductDetailsSection = ({ data, isIndividualPage }) => {
   const calculateDiscountedPrice = (originalPrice, discountPercentage) => {
     const discountAmount = (originalPrice * discountPercentage) / 100;
     const discountedPrice = originalPrice - discountAmount;
@@ -9,22 +9,21 @@ const ProductDetailsSection = ({ data }) => {
   };
   return (
     <div
-      className="w-full sm:w-[50%]  h-full md:py-14 px-12 md:px-24 flex flex-col justify-center bg-white fadeOut"
+      className="w-full sm:w-[50%] h-[40vh] sm:h-full md:py-14 px-10 md:px-24 flex flex-col justify-center bg-white fadeOut"
       key={data?.id ? data?.id : 0}
     >
       <div className=" w-full sm:w-[70%] ">
         <h3 className="text-[1.4rem] sm:text-[2rem] font-normal leading-tight font-mukta mb-2 sm:mb-1">
           {data?.title}{" "}
           <span className="text-fade text-[0.85rem] capitalize">
-             {data.category} 
+            {data.category}
           </span>
         </h3>
 
-          <div className="text-white bg-green text-[0.75rem] sm:text-[0.8rem] w-[3.2rem] py-[2px] sm:py-1 flex justify-center items-center rounded-[4px]">
-            {data.rating}
-            <StarFilled className="ml-1 " />
-          </div>
-
+        <div className="text-white bg-green text-[0.75rem] sm:text-[0.8rem] w-[3.2rem] py-[2px] sm:py-1 flex justify-center items-center rounded-[4px]">
+          {data.rating}
+          <StarFilled className="ml-1 " />
+        </div>
 
         <p
           className={`text-fade text-[0.85rem] sm:block sm:text-[0.9rem] mt-6 `}
@@ -43,6 +42,12 @@ const ProductDetailsSection = ({ data }) => {
             {Math.floor(data?.discountPercentage)}%
           </span>
         </p>
+
+        {isIndividualPage && (
+          <button className="border-2 border-pink mt-4 px-4 py-1 rounded-[4px] text-pink hover:text-white hover:bg-pink text-[0.75rem] sm:text-[0.8rem]">
+            Add to cart
+          </button>
+        )}
       </div>
     </div>
   );

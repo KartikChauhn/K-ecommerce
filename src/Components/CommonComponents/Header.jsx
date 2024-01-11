@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const Header = () => {
   const navigate = useNavigate();
   return (
-    <div className="h-[10vh] w-full border-b-2 bg-white flex justify-between items-center px-4 sm:px-10 overflow-hidden">
+    <div className="h-[10vh] max-w-[100vw] border-b-2 bg-white flex justify-between items-center px-4 sm:px-10 overflow-hidden">
       <div>
         <img
           src={logo}

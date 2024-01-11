@@ -13,7 +13,7 @@ const TopProducts = ({ data }) => {
   }, [activeSlide, data]);
 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 1500,
     slidesToShow: 1,
@@ -24,14 +24,6 @@ const TopProducts = ({ data }) => {
     pauseOnHover: false,
     vertical: true,
     beforeChange: (current, next) => setActiveSlide(next),
-    appendDots: (dots) => (
-      <div className="">
-        <ul className=" absolute w-[60%]  sm:w-[40%] pb-2 pr-[10%] flex justify-between left-[10%] sm:left-[-87%]  border-b-[2px] z-40">
-          {" "}
-          {dots}{" "}
-        </ul>
-      </div>
-    ),
     customPaging: (i) => (
       <a>
         {activeSlide === i ? (
@@ -44,19 +36,19 @@ const TopProducts = ({ data }) => {
   };
 
   return (
-    <div className="h-[80vh] sm:h-[90vh] w-full flex flex-col md:flex-row mb-6 sm:mb-0 ">
-      <h1 className="absolute mt-8 sm:mt-24 px-12 md:px-24 z-20 text-pink font-light text-[1rem] sm:text-[2rem] ">
+    <div className="h-[90vh] sm:h-[90vh] w-full flex flex-col md:flex-row mb-6 sm:mb-0 ">
+      <h1 className="absolute mt-8 sm:mt-20 px-10 md:px-24 z-20 text-pink  text-[1rem] sm:text-[2rem] ">
         Our Top Products
       </h1>
       <ProductDetailsSection data={activeData} />
-      <div className="sm:w-[50%] sm:h-full flex justify-center items-center overflow-hidden">
+      <div className="sm:w-[50%] h-[60vh] sm:h-full flex justify-center items-center overflow-hidden">
         <Slider {...settings}>
           {data &&
             data?.map((product, index) => {
               return (
                 <div
                   key={product?.id}
-                  className={`h-[50vh] sm:h-[60vh] w-full overflow-hidden ${
+                  className={`h-[60vh] w-full overflow-hidden ${
                     index === activeSlide ? "opacity-100" : "opacity-0"
                   } transition-all duration-1000 `}
                 >

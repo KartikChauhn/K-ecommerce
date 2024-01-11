@@ -16,7 +16,7 @@ const LandingPage = () => {
   );
 
   return (
-    <div>
+    <div className="min-h-[100vh]">
       <div className="w-full">
         {topProducts && topProducts.length > 0 && (
           <TopProducts data={topProducts} />
