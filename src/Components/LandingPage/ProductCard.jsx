@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-const ProductCard = ({ imageUrl, name, desc }) => {
+const ProductCard = ({ imageUrl, name, desc, id }) => {
+  const navigate = useNavigate();
   return (
     <div className={`h-[20rem] w-full border rounded-[6px] hover:shadow-md`}>
       <img
@@ -20,7 +22,10 @@ const ProductCard = ({ imageUrl, name, desc }) => {
           </p>
         </div>
         <div className="flex justify-between">
-          <button className="font-semibold text-[0.68rem] border w-[48%] rounded-[2px] py-2 border-pink text-pink">
+          <button
+            className="font-semibold text-[0.68rem] border w-[48%] rounded-[2px] py-2 border-pink text-pink"
+            onClick={() => navigate(`/product/${id}`)}
+          >
             {" "}
             View More
           </button>

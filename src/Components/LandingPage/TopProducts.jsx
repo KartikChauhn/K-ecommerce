@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
+import ProductDetailsSection from "../CommonComponents/ProductDetailsSection";
 
 const TopProducts = ({ data }) => {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -42,49 +43,12 @@ const TopProducts = ({ data }) => {
     ),
   };
 
-  const calculateDiscountedPrice = (originalPrice, discountPercentage) => {
-    const discountAmount = (originalPrice * discountPercentage) / 100;
-    const discountedPrice = originalPrice - discountAmount;
-    return Math.floor(discountedPrice);
-  };
-
   return (
     <div className="h-[80vh] sm:h-[90vh] w-full flex flex-col md:flex-row mb-6 sm:mb-0 ">
-      <div
-        className="w-full sm:w-[50%]  h-full md:py-14 px-12 md:px-24 flex flex-col justify-center bg-white fadeOut"
-        key={activeData?.id ? activeData?.id : 0}
-      >
-        <div className=" w-full sm:w-[70%]">
-          <h3 className="text-[1.2rem] sm:text-[2rem] font-normal leading-tight font-mukta">
-            {activeData?.title}{" "}
-            <span className="text-fade text-[0.85rem] capitalize">
-              ( {activeData.category} )
-            </span>
-          </h3>
-
-          <p
-            className={`text-fade text-[0.85rem] sm:block sm:text-[0.9rem] mt-6 `}
-          >
-            {activeData?.description?.length > 90
-              ? activeData?.description.slice(0, 90) + "... "
-              : activeData?.description}
-          </p>
-
-          <p className="font-normal text-xl font-mukta mt-4">
-            ₹
-            {calculateDiscountedPrice(
-              activeData.price,
-              activeData?.discountPercentage
-            )}{" "}
-            <span className="font-light text-[0.8rem]">
-              <del>₹{activeData?.price}</del>
-            </span>
-            <span className="font-medium text-pink ml-2 text-[1rem]">
-              {Math.floor(activeData?.discountPercentage)}%
-            </span>
-          </p>
-        </div>
-      </div>
+      <h1 className="absolute mt-8 sm:mt-24 px-12 md:px-24 z-20 text-pink font-light text-[1rem] sm:text-[2rem] ">
+        Our Top Products
+      </h1>
+      <ProductDetailsSection data={activeData} />
       <div className="sm:w-[50%] sm:h-full flex justify-center items-center overflow-hidden">
         <Slider {...settings}>
           {data &&

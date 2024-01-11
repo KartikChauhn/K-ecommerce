@@ -7,6 +7,7 @@ module.exports = {
         pink: "#EF4136",
         fade: "#666666",
         fadeLow: "#777777",
+        green: "#388E3C",
       },
     },
   },
