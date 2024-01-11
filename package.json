@@ -1,6 +1,7 @@
 {
   "name": "ecommerce",
   "version": "0.1.0",
+  "homepage": "https://kartikchauhn.github.io/K-ecommerce/",
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
