@@ -4,6 +4,7 @@ import { fetchData } from "../../redux/landingPageSlice";
 import TopProducts from "../../Components/LandingPage/TopProducts";
 import "./../../Styles/landingPage.css";
 import ProductList from "../../Components/LandingPage/ProductList";
+import logo from "./../../assets/Images/Ecomlogo.png";
 
 const LandingPage = () => {
   const dispactch = useDispatch();
@@ -16,14 +17,28 @@ const LandingPage = () => {
   );
 
   return (
-    <div className="min-h-[100vh]">
-      <div className="w-full">
-        {topProducts && topProducts.length > 0 && (
-          <TopProducts data={topProducts} />
-        )}
+    <>
+      <head>
+        <title>K-Store</title>
+        <meta name="Elchemy Home Page" content="Home Page" key="desc" />
+        <meta property="og:title" content="Artisian : Kartik Chauhan" />
+        <meta
+          property="og:description"
+          content={
+            "This is site is just an assignment, developed by Kartik Chauan."
+          }
+        />
+        <meta property="og:image" content={logo} />
+      </head>
+      <div className="min-h-[100vh]">
+        <div className="w-full">
+          {topProducts && topProducts.length > 0 && (
+            <TopProducts data={topProducts} />
+          )}
+        </div>
+        <ProductList productList={productList} />
       </div>
-      <ProductList productList={productList} />
-    </div>
+    </>
   );
 };
 

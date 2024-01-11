@@ -14,12 +14,21 @@ const IndividualProject = () => {
   }, [id]);
   const productData = useSelector((state) => state.landingPage.selectedProduct);
   return (
-    <div className="w-full min-h-[90vh] flex flex-col sm:flex-row items-center">
-      <div className="w-full sm:w-[50%] h-[50vh] sm:h-full flex justify-center items-center">
-        <ImageSlider imageArray={productData?.images} />
+    <>
+      <head>
+        <title>K-Store| Product</title>
+        <meta name="Elchemy Home Page" content="Home Page" key="desc" />
+        <meta property="og:title" content={productData?.title} />
+        <meta property="og:description" content={productData?.description} />
+        <meta property="og:image" content={productData?.thumbnail} />
+      </head>
+      <div className="w-full min-h-[90vh] flex flex-col sm:flex-row items-center">
+        <div className="w-full sm:w-[50%] h-[50vh] sm:h-full flex justify-center items-center">
+          <ImageSlider imageArray={productData?.images} />
+        </div>
+        <ProductDetailsSection data={productData} isIndividualPage={true} />
       </div>
-      <ProductDetailsSection data={productData} isIndividualPage={true} />
-    </div>
+    </>
   );
 };
 

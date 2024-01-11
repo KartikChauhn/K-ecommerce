@@ -18,11 +18,11 @@ const Header = () => {
       <div className="flex items-center gap-4 sm:gap-8">
         <div className="flex gap-2 items-center cursor-pointer">
           <ShoppingCartOutlined className=" text-[1.5rem] " />
-          <p className="hidden sm:visible">Cart</p>
+          <p className="hidden sm:block">Cart</p>
         </div>
         <div className="flex gap-2 items-center">
           <UserOutlined className=" text-[1.5rem] cursor-pointer" />
-          <p className="hidden sm:visible">Account</p>
+          <p className="hidden sm:block">Account</p>
         </div>
       </div>
     </div>
