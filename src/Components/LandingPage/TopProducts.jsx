@@ -5,8 +5,6 @@ const TopProducts = ({ data }) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const [activeData, setActiveData] = useState(data?.[0] ?? {});
 
-  console.log(activeData, "asdlfhs");
-
   useEffect(() => {
     if (data) {
       setActiveData(data[activeSlide]);
