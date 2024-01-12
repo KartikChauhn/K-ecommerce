@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import ProductDetailsSection from "../CommonComponents/ProductDetailsSection";
+import { useNavigate } from "react-router-dom";
 
 const TopProducts = ({ data }) => {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -35,6 +36,7 @@ const TopProducts = ({ data }) => {
     ),
   };
 
+  const navigate = useNavigate();
   return (
     <div className="h-[90vh] sm:h-[90vh] w-full flex flex-col md:flex-row mb-6 sm:mb-0 ">
       <h1 className="absolute mt-8 sm:mt-20 px-10 md:px-24 z-20 text-pink  text-[1rem] sm:text-[2rem] ">
@@ -58,7 +60,8 @@ const TopProducts = ({ data }) => {
                   <img
                     src={product?.thumbnail}
                     alt={product?.type}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover cursor-pointer"
+                    onClick={() => navigate(`/product/${product.id}`)}
                   />
                 </div>
               );
