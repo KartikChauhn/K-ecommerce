@@ -12,7 +12,8 @@ const ProductCard = ({ imageUrl, name, desc, id }) => {
             : "https://elchemydev.s3.ap-south-1.amazonaws.com/static/image/1704360718.png"
         }
         alt="logo"
-        className="h-[48%] w-full object-cover"
+        className="h-[48%] w-full object-cover cursor-pointer"
+        onClick={() => navigate(`/product/${id}`)}
       />
       <div className="h-[52%] w-full flex flex-col justify-around px-3">
         <div>
