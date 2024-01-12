@@ -3,9 +3,12 @@ import axios from "axios";
 
 export const fetchData = createAsyncThunk(
   "fetchData",
-  async (args, { rejectWithValue }) => {
+  async (pagination, { rejectWithValue }) => {
     try {
-      const response = await axios.get("https://dummyjson.com/products");
+      const skip = (pagination.current - 1) * pagination.pageSize;
+      const response = await axios.get(
+        `https://dummyjson.com/products?limit=${pagination.pageSize}&skip=${skip}`
+      );
       if (response.status === 200) {
         return response?.data;
       } else {
@@ -71,12 +74,11 @@ const landingPageSlice = createSlice({
     });
     builder.addCase(fetchData.fulfilled, (state, action) => {
       state.loading = false;
+      state.totalCount = action?.payload?.total;
       if (state.topProducts.length < 1) {
         state.topProducts = action.payload?.products.slice(0, 3);
-        state.productList = action.payload?.products.slice(3);
-      } else {
-        state.productList = action.payload?.products;
       }
+      state.productList = action.payload?.products;
     });
     builder.addCase(fetchData.rejected, (state, action) => {
       state.loading = false;
